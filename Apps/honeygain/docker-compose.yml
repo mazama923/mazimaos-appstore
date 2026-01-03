@@ -39,7 +39,7 @@ x-casaos:
   architectures:
     - amd64
   main: honeygain
-  author: "self"
+  author: "mazama923"
   category: "Network"
   description:
     en_us: "Honeygain bandwidth sharing client running in a Docker container."
