@@ -29,20 +29,20 @@ More apps will be added over time as the home lab and use cases grow.
 
 ### Honeygain
 
-Honeygain bandwidth sharing client running in a Docker container, using the official `honeygain/honeygain` image. [web:268][web:269]
+Honeygain bandwidth sharing client running in a Docker container, using the official `honeygain/honeygain` image.
 
-- No ports or volumes required; configuration is done entirely via command‑line arguments. [web:268][web:270]
-- Uses `--restart unless-stopped` so it comes back automatically after a reboot. [web:269][web:289]
-- Very lightweight in terms of CPU/RAM (well within typical ZimaOS home server resources). [web:279]
+- No ports or volumes required; configuration is done entirely via command‑line arguments.
+- Uses `--restart unless-stopped` so it comes back automatically after a reboot.[web:289]
+- Very lightweight in terms of CPU/RAM (well within typical ZimaOS home server resources).
 
-**Important:**  
+**Important:**
 Before deploying from this AppStore, edit the app in ZimaOS/CasaOS and replace:
 
 - `TON_EMAIL` with your Honeygain account email
 - `TON_PASSWORD` with your Honeygain account password
-- `ZimaBoard` with a unique device name for this machine (as shown in the Honeygain dashboard) [web:269][web:289]
+- `ZimaBoard` with a unique device name for this machine (as shown in the Honeygain dashboard)
 
-The underlying Docker command matches the official Honeygain Docker guide:  
+The underlying Docker command matches the official Honeygain Docker guide:
 
 ```bash
 docker run -d --restart unless-stopped \

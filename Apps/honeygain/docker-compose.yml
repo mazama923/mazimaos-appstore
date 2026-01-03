@@ -5,7 +5,6 @@ services:
     image: honeygain/honeygain:latest
     container_name: honeygain
 
-    # Command line arguments from official docs
     command:
       - -tou-accept
       - -email
@@ -21,7 +20,6 @@ services:
     privileged: false
     cap_add: []
 
-    # No ports / volumes needed for Honeygain
     ports: []
     volumes: []
     devices: []
@@ -49,7 +47,6 @@ x-casaos:
   title:
     en_us: "Honeygain"
 
-  # No web UI → no port map / index
   port_map: ""
   scheme: ""
   hostname: ""
