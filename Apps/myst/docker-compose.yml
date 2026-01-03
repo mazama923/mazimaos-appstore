@@ -30,7 +30,6 @@ services:
     command:
       - service
       - --agreed-terms-and-conditions
-      - --udp.ports=56060:56100
 
     ports:
       - "4449:4449/tcp"
