@@ -30,11 +30,11 @@ services:
     command:
       - service
       - --agreed-terms-and-conditions
-      - --udp.ports=56000:56100
+      - --udp.ports=56060:56100
 
     ports:
       - "4449:4449/tcp"
-      - "56000-56100:56000-56100/udp"
+      - "56060-56100:56060-56100/udp"
 
 x-casaos:
   architectures:
@@ -48,7 +48,7 @@ x-casaos:
     en_us: "Secure Mysterium node."
   icon: "https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/myst/icon.png"
   title:
-    en_us: "Myst Node (Self)"
+    en_us: "Myst Node"
 
   port_map: "4449"
   scheme: http
@@ -65,7 +65,7 @@ x-casaos:
     - container: "4449"
       description:
         en_us: "Myst dashboard (TequilAPI) HTTP"
-    - container: "56000-56100"
+    - container: "56060-56100"
       description:
         en_us: "UDP range for Myst VPN traffic"
 
