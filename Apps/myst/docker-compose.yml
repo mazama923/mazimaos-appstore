@@ -1,0 +1,71 @@
+name: myst
+
+services:
+  myst:
+    image: mysteriumnetwork/myst:latest
+    container_name: myst
+
+    network_mode: bridge
+
+    cap_add:
+      - NET_ADMIN
+    privileged: false
+
+    restart: unless-stopped
+
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+        reservations:
+          memory: 512m
+
+    dns:
+      - 1.1.1.3
+      - 1.0.0.3
+
+    volumes:
+      - /DATA/AppData/myst-node:/var/lib/mysterium-node
+
+    command:
+      - service
+      - --agreed-terms-and-conditions
+      - --udp.ports=56000:56100
+
+    ports:
+      - "4449:4449/tcp"
+      - "56000-56100:56000-56100/udp"
+
+x-casaos:
+  architectures:
+    - amd64
+  main: myst
+  author: "mazama923"
+  category: "Network"
+  description:
+    en_us: "Run a Mysterium VPN node with Cloudflare Families DNS filtering."
+  tagline:
+    en_us: "Secure Mysterium node."
+  icon: "https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/myst/icon.png"
+  title:
+    en_us: "Myst Node (Self)"
+
+  port_map: "4449"
+  scheme: http
+  hostname: ""
+  index: "/"
+
+  volumes:
+    - container: "/var/lib/mysterium-node"
+      host: "/DATA/AppData/myst-node"
+      description:
+        en_us: "Persistent data for Myst node (you can change this path before install)."
+
+  ports:
+    - container: "4449"
+      description:
+        en_us: "Myst dashboard (TequilAPI) HTTP"
+    - container: "56000-56100"
+      description:
+        en_us: "UDP range for Myst VPN traffic"
+
