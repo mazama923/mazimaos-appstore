@@ -1,0 +1,59 @@
+name: honeygain
+
+services:
+  honeygain:
+    image: honeygain/honeygain:latest
+    container_name: honeygain
+
+    # Command line arguments from official docs
+    command:
+      - -tou-accept
+      - -email
+      - YOUR_EMAIL_HERE
+      - -pass
+      - YOUR_PASSWORD_HERE
+      - -device
+      - ZimaBoard
+
+    restart: unless-stopped
+
+    network_mode: bridge
+    privileged: false
+    cap_add: []
+
+    # No ports / volumes needed for Honeygain
+    ports: []
+    volumes: []
+    devices: []
+    environment: []
+
+    cpu_shares: 10
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+        reservations:
+          memory: 256m
+
+x-casaos:
+  architectures:
+    - amd64
+  main: honeygain
+  author: "self"
+  category: "Network"
+  description:
+    en_us: "Honeygain bandwidth sharing client running in a Docker container."
+  tagline:
+    en_us: "Earn passive income with your spare bandwidth."
+  icon: "https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/honeygain/icon.png"
+  title:
+    en_us: "Honeygain"
+
+  # No web UI → no port map / index
+  port_map: ""
+  scheme: ""
+  hostname: ""
+  index: ""
+
+  volumes: []
+  ports: []

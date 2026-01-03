@@ -17,7 +17,7 @@ This repository contains `docker-compose.yml` files adapted to the ZimaOS/CasaOS
 
 ## 📦 Included applications
 
-### Myst Node (Self)
+### Myst Node
 
 A Mysterium VPN node with:
 
@@ -26,6 +26,32 @@ A Mysterium VPN node with:
 - Restricted UDP port range to reduce exposure while staying compatible with Mysterium’s documentation.
 
 More apps will be added over time as the home lab and use cases grow.
+
+### Honeygain
+
+Honeygain bandwidth sharing client running in a Docker container, using the official `honeygain/honeygain` image. [web:268][web:269]
+
+- No ports or volumes required; configuration is done entirely via command‑line arguments. [web:268][web:270]
+- Uses `--restart unless-stopped` so it comes back automatically after a reboot. [web:269][web:289]
+- Very lightweight in terms of CPU/RAM (well within typical ZimaOS home server resources). [web:279]
+
+**Important:**  
+Before deploying from this AppStore, edit the app in ZimaOS/CasaOS and replace:
+
+- `TON_EMAIL` with your Honeygain account email
+- `TON_PASSWORD` with your Honeygain account password
+- `ZimaBoard` with a unique device name for this machine (as shown in the Honeygain dashboard) [web:269][web:289]
+
+The underlying Docker command matches the official Honeygain Docker guide:  
+
+```bash
+docker run -d --restart unless-stopped \
+  honeygain/honeygain \
+  -tou-accept \
+  -email ACCOUNT_EMAIL \
+  -pass ACCOUNT_PASSWORD \
+  -device DEVICE_NAME
+```
 
 ---
 
@@ -78,4 +104,3 @@ You can:
 - Add your own apps under `Apps/<app-name>/docker-compose.yml` following the same `x-casaos` pattern.
 
 Third-party AppStores are listed on Awesome CasaOS; this repo follows the same philosophy: simple, readable, and easy to maintain.
-
