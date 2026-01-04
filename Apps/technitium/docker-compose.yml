@@ -1,0 +1,32 @@
+name: technitium_dns
+services:
+  main_app:
+    cpu_shares: 90
+    container_name: dns-server
+    environment:
+      - DNS_SERVER_ADMIN_PASSWORD=change_this_password
+      - DNS_SERVER_DOMAIN=dns-server
+      - DNS_SERVER_LOG_USING_LOCAL_TIME=true
+      - DNS_SERVER_RECURSION=AllowOnlyForPrivateNetworks
+    image: technitium/dns-server:14.3.0
+    labels:
+      icon: "https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/technitium/icon.png"
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/dns-server/config
+        target: /etc/dns
+    network_mode: host
+    privileged: false
+x-casaos:
+  author: mazama923
+  category: Networking
+  hostname: dns-server
+  icon: "https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/technitium/icon.png"
+  index: /
+  is_uncontrolled: false
+  port_map: "5380"
+  scheme: http
+  store_app_id: technitium_dns
+  title:
+    custom: Technitium DNS
