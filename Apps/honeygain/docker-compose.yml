@@ -4,7 +4,6 @@ services:
   honeygain:
     image: honeygain/honeygain:latest
     container_name: honeygain
-
     command:
       - -tou-accept
       - -email
@@ -13,18 +12,9 @@ services:
       - YOUR_PASSWORD_HERE
       - -device
       - ZimaBoard
-
     restart: unless-stopped
-
     network_mode: bridge
     privileged: false
-    cap_add: []
-
-    ports: []
-    volumes: []
-    devices: []
-    environment: []
-
     cpu_shares: 10
     deploy:
       resources:
@@ -46,11 +36,3 @@ x-casaos:
   icon: "https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/honeygain/icon.png"
   title:
     en_us: "Honeygain"
-
-  port_map: ""
-  scheme: ""
-  hostname: ""
-  index: ""
-
-  volumes: []
-  ports: []
