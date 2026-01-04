@@ -25,7 +25,9 @@ A Mysterium VPN node with:
 - Default persistent volume: `/DATA/AppData/myst-node:/var/lib/mysterium-node`, which can be changed before installation in the ZimaOS UI.
 - Restricted UDP port range to reduce exposure while staying compatible with Mysterium’s documentation.
 
-More apps will be added over time as the home lab and use cases grow.
+⚠️ In the interface available on port 4449, change the UDP port range to 56060:56100.
+⚠️ Open the port range 56060:56100 in your internet box interface to your zimaos server.
+⛔️ Do not open port 4449 to the internet, as this is the VPN dashboard.
 
 ### Honeygain
 
