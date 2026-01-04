@@ -9,6 +9,7 @@ services:
       - NET_ADMIN
     privileged: false
     restart: unless-stopped
+    cpu_shares: 10
     deploy:
       resources:
         limits:
