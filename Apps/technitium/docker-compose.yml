@@ -1,7 +1,7 @@
 name: dns-server
 
 services:
-  main_app:
+  dns-server:
     cpu_shares: 90
     container_name: dns-server
     environment:
