@@ -25,9 +25,11 @@ A Mysterium VPN node with:
 - Default persistent volume: `/DATA/AppData/myst-node:/var/lib/mysterium-node`, which can be changed before installation in the ZimaOS UI.
 - Restricted UDP port range to reduce exposure while staying compatible with Mysterium’s documentation.
 
-⚠️ In the interface available on port 4449, change the UDP port range to 56060:56100.
-⚠️ Open the port range 56060:56100 in your internet box interface to your zimaos server.
-⛔️ Do not open port 4449 to the internet, as this is the VPN dashboard.
+⚠️ In the interface available on port `4449`, change the UDP port range to `56060:56100`
+
+⚠️ Open the port range `56060:56100` in your internet box interface to your ZimaOS server.
+
+⛔️ Do not open port `4449` to the internet, as this is the VPN dashboard.
 
 ### Honeygain
 
@@ -41,20 +43,28 @@ Honeygain bandwidth sharing client running in a Docker container, using the offi
 **Important:**
 Before deploying from this AppStore, edit the app in ZimaOS/CasaOS and replace:
 
-- `TON_EMAIL` with your Honeygain account email
-- `TON_PASSWORD` with your Honeygain account password
+- `YOUR_EMAIL_HERE` with your Honeygain account email
+- `YOUR_PASSWORD_HERE` with your Honeygain account password
 - `ZimaBoard` with a unique device name for this machine (as shown in the Honeygain dashboard)
 
 The underlying Docker command matches the official Honeygain Docker guide:
 
 ```bash
-docker run -d --restart unless-stopped \
-  honeygain/honeygain \
-  -tou-accept \
-  -email ACCOUNT_EMAIL \
-  -pass ACCOUNT_PASSWORD \
-  -device DEVICE_NAME
+docker run -d --restart unless-stopped honeygain/honeygain -tou-accept -email ACCOUNT_EMAIL -pass ACCOUNT_PASSWORD -device DEVICE_NAME
 ```
+
+### Technitium DNS
+
+Technitium DNS Server running in Docker with host networking, acting as a full DNS and optional DHCP server for your LAN.
+
+- Open source authoritative and recursive DNS server with built‑in DHCP, DNS-over-HTTPS/TLS/QUIC, and advanced zone management.
+- Default persistent volume: `/DATA/AppData/dns-server/config:/etc/dns`, storing all configuration, zones, and logs.
+- Exposes the web dashboard on port `5380` (HTTP) via the ZimaOS UI, while DNS (`53`) and DHCP (`67/udp`) work directly on the host IP when using `network_mode: host`.
+
+**Notes:**
+
+- After installation, connect to `http://IP_DE_TON_ZIMA:5380` to run the initial setup wizard and change the admin password.
+- If you enable DHCP in Technitium, disable DHCP on your router to avoid conflicts and keep a single source of truth for leases.
 
 ---
 
@@ -74,7 +84,7 @@ ZimaOS / CasaOS will read the manifests from this archive and show the apps in t
 
 1. Open the ZimaOS / CasaOS Dashboard.
 2. Go to App Store.
-3. Click Add Source / Add Repository.
+3. Click **Add Source / Add Repository**.
 4. Paste the ZIP URL:
 
    ```text
@@ -82,7 +92,7 @@ ZimaOS / CasaOS will read the manifests from this archive and show the apps in t
    ```
 
 5. Confirm and wait for the store list to refresh (or reboot if needed).
-6. Search for Myst Node (Self) in the App Store and install it like any other app.
+6. Search for the apps (Myst Node, Honeygain, Technitium DNS) in the App Store and install them like any other app.
 
 ---
 
@@ -91,9 +101,15 @@ ZimaOS / CasaOS will read the manifests from this archive and show the apps in t
 ```text
 mazimaos-appstore
 ├─ Apps/
-│  └─ myst/
-│     ├─ docker-compose.yml   # app definition + x-casaos metadata
-│     └─ icon.png             # icon used in ZimaOS/CasaOS
+│  ├─ myst/
+│  │  ├─ docker-compose.yml   # Myst node definition + x-casaos metadata
+│  │  └─ icon.png             # icon used in ZimaOS/CasaOS
+│  ├─ honeygain/
+│  │  ├─ docker-compose.yml   # Honeygain client + x-casaos metadata
+│  │  └─ icon.png
+│  └─ technitium/
+│     ├─ docker-compose.yml   # Technitium DNS Server + x-casaos metadata
+│     └─ icon.png
 └─ README.md
 ```
 

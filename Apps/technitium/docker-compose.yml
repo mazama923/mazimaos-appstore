@@ -1,4 +1,5 @@
-name: technitium_dns
+name: dns-server
+
 services:
   main_app:
     cpu_shares: 90
@@ -18,15 +19,38 @@ services:
         target: /etc/dns
     network_mode: host
     privileged: false
+
 x-casaos:
-  author: mazama923
-  category: Networking
-  hostname: dns-server
+  architectures:
+    - amd64
+  main: dns-server
+  author: "mazama923"
+  category: "Network"
   icon: "https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/technitium/icon.png"
-  index: /
+  index: "/"
   is_uncontrolled: false
   port_map: "5380"
   scheme: http
-  store_app_id: technitium_dns
+  hostname: ""
   title:
-    custom: Technitium DNS
+    en_us: Technitium DNS Server
+  description:
+    en_us: "Open source DNS & DHCP server with privacy features, ad-blocking, and zones management."
+  tagline:
+    en_us: "Advanced self-hosted DNS resolver for home labs."
+  volumes:
+    - container: "/etc/dns"
+      host: "/DATA/AppData/dns-server/config"
+      description:
+        en_us: "Config and data persistence for Technitium DNS."
+  ports:
+    - container: "5380"
+      description:
+        en_us: "Web dashboard (HTTP)"
+    - container: "53"
+      description:
+        en_us: "DNS service (TCP/UDP)"
+    - container: "67/udp"
+      description:
+        en_us: "DHCP server (optional)"
+
