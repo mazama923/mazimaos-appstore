@@ -22,6 +22,9 @@ services:
           memory: 512m
         reservations:
           memory: 256m
+    dns:
+      - 1.1.1.3
+      - 1.0.0.3
 
 x-casaos:
   architectures:
@@ -30,7 +33,7 @@ x-casaos:
   author: "mazama923"
   category: "Network"
   description:
-    en_us: "Honeygain bandwidth sharing client running in a Docker container."
+    en_us: "Honeygain bandwidth sharing client with Cloudflare Families DNS filtering."
   tagline:
     en_us: "Earn passive income with your spare bandwidth."
   icon: "https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/honeygain/icon.png"

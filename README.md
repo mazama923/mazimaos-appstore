@@ -31,8 +31,9 @@ More apps will be added over time as the home lab and use cases grow.
 
 Honeygain bandwidth sharing client running in a Docker container, using the official `honeygain/honeygain` image.
 
+- Cloudflare 1.1.1.1 for Families DNS (`1.1.1.3` / `1.0.0.3`) to block malware and adult content at DNS level.
 - No ports or volumes required; configuration is done entirely via command‑line arguments.
-- Uses `--restart unless-stopped` so it comes back automatically after a reboot.[web:289]
+- Uses `--restart unless-stopped` so it comes back automatically after a reboot.
 - Very lightweight in terms of CPU/RAM (well within typical ZimaOS home server resources).
 
 **Important:**
