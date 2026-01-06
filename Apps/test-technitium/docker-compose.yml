@@ -8,6 +8,7 @@ services:
       - DNS_SERVER_DOMAIN=dns-server
       - DNS_SERVER_LOG_USING_LOCAL_TIME=true
       - DNS_SERVER_RECURSATION=AllowOnlyForPrivateNetworks
+      - DNS_SERVER_WEB_PORT=5381  # Port web différent (au lieu 5380) !
     image: technitium/dns-server:14.3.0
     labels:
       icon: icon.png
@@ -30,7 +31,8 @@ x-casaos:
   icon: icon.png
   index: "/"
   is_uncontrolled: false
-  port_map: "5380"
+  # port_map: "5380"
+  port_map: "5381"  # Temporaire pour test
   scheme: http
   hostname: ""
   title:
@@ -49,7 +51,8 @@ x-casaos:
         en_us: "Config and data persistence"
         fr_fr: "Configuration et persistance des données"
   ports:
-    - container: "5380"
+    # - container: "5380"
+    - container: "5381"  # Web sur 5381
       description:
         en_us: "Web dashboard (HTTP)"
         fr_fr: "Interface web (HTTP)"
