@@ -8,6 +8,7 @@ services:
       - DNS_SERVER_DOMAIN=dns-server
       - DNS_SERVER_LOG_USING_LOCAL_TIME=true
       - DNS_SERVER_RECURSION=AllowOnlyForPrivateNetworks
+      - DNS_SERVER_WEB_SERVICE_HTTP_PORT=${WEBUI_PORT:-5380}
     image: technitium/dns-server:14.3.0
     labels:
       icon: "https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/technitium/icon.png"
@@ -30,7 +31,7 @@ x-casaos:
   icon: "https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/technitium/icon.png"
   index: "/"
   is_uncontrolled: false
-  port_map: "5380"
+  port_map: ${WEBUI_PORT:-5380}
   scheme: http
   hostname: ""
   title:
@@ -49,7 +50,7 @@ x-casaos:
         en_us: "Config and data persistence for Technitium DNS."
         fr_fr: "Configuration et persistance des données"
   ports:
-    - container: "5380"
+    - container: ${WEBUI_PORT:-5380}
       description:
         en_us: "Web dashboard (HTTP)"
         fr_fr: "Interface web (HTTP)"
