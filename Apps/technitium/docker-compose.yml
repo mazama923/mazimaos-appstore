@@ -12,7 +12,7 @@ services:
     image: technitium/dns-server:14.3.0
     labels:
       icon: "https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/technitium/icon.png"
-    restart: unless-stopped
+    restart: always
     volumes:
       - type: bind
         source: /DATA/AppData/dns-server/config
