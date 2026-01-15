@@ -12,7 +12,7 @@ services:
           memory: 256m
     environment:
       - HONEYGAIN_EMAIL=to_change
-      - HONEYGAIN_PASSWORDASSWORD=to_change
+      - HONEYGAIN_PASSWORD=to_change
     image: benlexa/honeygain-lucky-pot:latest
     labels:
       icon: https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/honeygain-lucky-pot/icon.png
