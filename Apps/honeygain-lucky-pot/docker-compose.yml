@@ -1,7 +1,7 @@
 name: honeygain-lucky-pot
 
 services:
-  main_app:
+  honeygain-lucky-pot:
     container_name: honeygain-lucky-pot
     cpu_shares: 10
     deploy:
