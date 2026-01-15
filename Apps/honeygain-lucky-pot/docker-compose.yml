@@ -41,4 +41,4 @@ x-casaos:
         ## 🔐 **Change environment variable!**
 
         - HONEYGAIN_EMAIL : `honeygain account email`
-        - HONEYGAIN_PASSWORDASSWORD : `honeygain password`
+        - HONEYGAIN_PASSWORD : `honeygain password`
