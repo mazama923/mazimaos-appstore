@@ -1,0 +1,44 @@
+name: honeygain-lucky-pot
+
+services:
+  main_app:
+    container_name: honeygain-lucky-pot
+    cpu_shares: 10
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+        reservations:
+          memory: 256m
+    environment:
+      - HONEYGAIN_EMAIL=to_change
+      - HONEYGAIN_PASSWORDASSWORD=to_change
+    image: benlexa/honeygain-lucky-pot:latest
+    labels:
+      icon: https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/honeygain-lucky-pot/icon.png
+    restart: unless-stopped
+    network_mode: bridge
+    privileged: false
+
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+    - arm
+  main: honeygain-lucky-pot
+  author: "mazama923"
+  category: "Network"
+  description:
+    en_us: "Automates the Honeygain Lucky Pot collection."
+  tagline:
+    en_us: "Automates the Honeygain Lucky Pot collection."
+  icon: "https://raw.githubusercontent.com/mazama923/mazimaos-appstore/main/Apps/honeygain-lucky-pot/icon.png"
+  title:
+    en_us: "Honeygain Lucky Pot"
+  tips:
+    before_install:
+      en_us: |
+        ## 🔐 **Change environment variable!**
+
+        - HONEYGAIN_EMAIL : `honeygain account email`
+        - HONEYGAIN_PASSWORDASSWORD : `honeygain password`
